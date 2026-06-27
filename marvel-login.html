@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarvelVerse | Login</title>
+<style>
+  :root {
+    --marvel-red: #ed1d24;
+    --marvel-red-dark: #b3151a;
+    --bg-dark: #0d0d0d;
+    --card-bg: #1a1a1a;
+    --text-light: #f5f5f5;
+    --text-muted: #9a9a9a;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg-dark);
+    background-image: radial-gradient(circle at 50% 0%, #2a0a0a 0%, #0d0d0d 60%);
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .login-card {
+    background: var(--card-bg);
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 0 0 1px rgba(237,29,36,0.15), 0 20px 50px rgba(0,0,0,0.5);
+  }
+
+  .brand {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .brand .star {
+    color: var(--marvel-red);
+    font-size: 1.4rem;
+  }
+
+  .brand h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    text-transform: uppercase;
+  }
+
+  .brand h1 span {
+    color: var(--marvel-red);
+  }
+
+  .tagline {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 30px;
+  }
+
+  .field {
+    margin-bottom: 18px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+  }
+
+  .field input {
+    width: 100%;
+    padding: 12px 14px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .field input:focus {
+    border-color: var(--marvel-red);
+  }
+
+  .password-wrap {
+    position: relative;
+  }
+
+  .password-wrap input {
+    padding-right: 44px;
+  }
+
+  .toggle-pass {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+
+  .toggle-pass:hover { color: var(--text-light); }
+
+  .row-between {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 22px;
+  }
+
+  .forgot {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    text-decoration: none;
+  }
+
+  .forgot:hover {
+    color: var(--marvel-red);
+    text-decoration: underline;
+  }
+
+  .btn-login {
+    width: 100%;
+    padding: 13px;
+    background: var(--marvel-red);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+  .btn-login:hover {
+    background: var(--marvel-red-dark);
+  }
+
+  .btn-login:active {
+    transform: scale(0.98);
+  }
+
+  .signup-text {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .signup-text a {
+    color: var(--marvel-red);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .msg {
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: 14px;
+    min-height: 18px;
+    color: var(--marvel-red);
+  }
+
+  @media (max-width: 420px) {
+    .login-card { padding: 32px 24px; }
+    .brand h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="login-card">
+    <div class="brand">
+      <div class="star">★</div>
+      <h1>Marvel<span>Verse</span></h1>
+    </div>
+    <p class="tagline">Built by a fan, for fans. Assemble and log in.</p>
+
+    <form id="loginForm">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="tony@starkindustries.com" required>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="password-wrap">
+          <input type="password" id="password" placeholder="Enter your password" required>
+          <button type="button" class="toggle-pass" id="togglePass">Show</button>
+        </div>
+      </div>
+
+      <div class="row-between">
+        <a href="#" class="forgot">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn-login">Log In</button>
+      <p class="msg" id="msg"></p>
+    </form>
+
+    <p class="signup-text">New to the universe? <a href="#">Sign up</a></p>
+  </div>
+
+  <script>
+    const togglePass = document.getElementById('togglePass');
+    const passwordInput = document.getElementById('password');
+    const form = document.getElementById('loginForm');
+    const msg = document.getElementById('msg');
+
+    togglePass.addEventListener('click', () => {
+      const isHidden = passwordInput.type === 'password';
+      passwordInput.type = isHidden ? 'text' : 'password';
+      togglePass.textContent = isHidden ? 'Hide' : 'Show';
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      msg.textContent = 'With great power comes great responsibility. Logging you in...';
+      setTimeout(() => {
+        msg.textContent = 'Login simulated! Connect this form to your backend.';
+      }, 1200);
+    });
+  </script>
+
+</body>
+</html>
